@@ -27,6 +27,6 @@ The check box on the left hand side of the task marks the task as accomplished s
 
 
 ## Deployed Site
-The project is deployed on both [Netlify](https://sanjaytodo-list.netlify.app/) to have a handy access.
+The project is deployed on [Netlify](https://sanjaytodo-list.netlify.app/) to have a handy access.
 
 
