@@ -95,7 +95,7 @@ const Todo=()=>{
 
     
     const handleEnter=(e,nextId)=>{
-      if(e.keyCode==13) 
+      if(e.keyCode===13) 
         {e.preventDefault();
         document.getElementById(nextId).focus();
         }
