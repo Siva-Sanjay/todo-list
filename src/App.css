@@ -1,38 +1,108 @@
+.mouse-memoirs-regular {
+  font-family: "Mouse Memoirs", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 .App {
   text-align: center;
+  background-color: rgb(241, 177, 241);
+  height:100vh;
+  overflow: auto;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* accordion*/
+.accordion{
+  width: 400px;
+  height:max-content;
+  padding: 2%;
+  margin: 20px 10px ;
+  background-color: rgb(241, 242, 242);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgb(182, 120, 236);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.accordion-item, .accordion-item:last-of-type{
+    margin: 10px;
+    background-color: rgb(224, 200, 255);
+      border-radius: 30px 30px 30px 30px;
+      box-shadow: 1px 1px 2px;
+      border-width: 0px;
+}
+.accordion-button, .accordion-item:last-of-type>.accordion-header .accordion-button.collapsed{
+border-radius: 50px;
+/* margin-right: 5%; */
+border: groove 1px  rgba(0, 0, 0, 0.459);
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.accordion-button:not(.collapsed){ 
+  background-color: white;
+}
+.accordion-button:focus{
+  box-shadow:none;
+}
+
+/* Text box in accordian */
+.taskTitle, textarea{
+  color: black;
+  text-align: center;
+  background-color: white;
+  border-radius: 15px;  
+}
+textarea{
+  height: 6rem;
+  
+}
+.taskTitle{
+  font-weight: bold;
+  min-width: 1px;
+  margin: 2px;
+  
+}
+.taskTitle:disabled , textarea:disabled{
+  background-color: rgba(255, 255, 255, 0.228);
+  
+}
+.time{
+  margin: auto;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding:2px;
+  margin: 2px ;
+}
+
+/* Header of acordian */
+
+.add{
+ background-color: blueviolet;
+ border-radius: 50px;
+ font-size: 20px;
+ vertical-align: middle;
+ font-weight: bold;
+ color: white;
+ width: 15%;
+}
+.add:hover{
+  background-color: rgb(206, 99, 249);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.searchbar{
+  width:82%;
+}
+.srchbar{
+  border-radius:50px;
+  border-color:rgb(145, 23, 211); 
+  border-width: 0.2em
+  /* margin : 1%; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.heading{
+  font-size: 3rem;
+  font-family: "Mouse Memoirs", sans-serif; ;
+  
 }
