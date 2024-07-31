@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Todo from './components/Todo' ;
 
 function App() {
-  //console.dir(Todo());
   return (
     <div className="App d-flex justify-content-center">
       

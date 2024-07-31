@@ -7,6 +7,8 @@ const Todo=()=>{
     let {search}=useParams();
     if(search); else search="";
     search= search.toLowerCase();
+
+    
     const [todos, setTodos] = useState([
         {
           id: 1,
@@ -37,69 +39,69 @@ const Todo=()=>{
             time: "13:20"
           }
       ]);
-      const [edit,setEdit]=useState(null);
-      const [src,setSrc] = useState(document.getElementById("srchtxt"));
+      const [edit,setEdit]=useState(null);  //to track which element to enable
+      const [src,setSrc] = useState(document.getElementById("srchtxt")); //search query
 
-      const addSrc=(e)=>setSrc(e.target.value);
+      const updateSrc=(e)=>setSrc(e.target.value);  //function to update the search query in real time
 
-       const addNew=()=>{
+      //adding new task in the todo list
+      const addNew=()=>
+      {
         const id=todos.length+1;
-        setTodos([...todos,{
+        setTodos([...todos,
+          {
             id: id,
             title: "New Task",
             desc: "Click Edit and add your task",
             status: true,
             time: getCurrTime()
-          }])
-     }
+        }])
+      }
     
 
- 
-    const toggle=(id)=>{
-      setTodos((prevTodos)=>{
-        const temp = prevTodos.map((todo, index) =>
-        index === id ? { ...todo, status: !todo.status, time: getCurrTime() } : todo
-      );
-        console.log(temp[id].status);
-        return temp;
-      });
-    console.dir(todos);
-    }
-
-    const enableEdit=(id)=>{
-      if(edit===id) 
-      { 
-        setEdit(null);
-
+      //To toggle status of a task (Done/pending)
+      const toggle=(id)=>
+      {
         setTodos((prevTodos)=>{
-          const temp=[...prevTodos];
-          temp[id-1].title=document.getElementById("title"+id).value;
-          temp[id-1].desc= document.getElementById("desc"+id).value;
-          temp[id-1].time= getCurrTime();
+          const temp = prevTodos.map((todo, index) =>
+          (index === id) ? { ...todo, status: !todo.status, time: getCurrTime() } : todo);
+          console.log(temp[id].status);
           return temp;
         });
-        console.dir(todos);
       }
-      else 
-        {
-          setEdit(id);
-          
+
+      //update which task is to be editable or disabled
+      const enableEdit=(id)=>{
+        if(edit===id) 
+        { 
+          setEdit(null);
+          setTodos((prevTodos)=>{
+            const temp=[...prevTodos];
+            temp[id-1].title=document.getElementById("title"+id).value;
+            temp[id-1].desc= document.getElementById("desc"+id).value;
+            temp[id-1].time= getCurrTime();
+            return temp;
+          });
         }
-    }
+        else 
+          setEdit(id);  
+      }
  
-    const getCurrTime=()=>{
-      let time = new Date();
-      return (time.getHours() + ":" + time.getMinutes()) ;
-    }
+      const getCurrTime=()=>
+      {
+        let time = new Date();
+        return (time.getHours() + ":" + time.getMinutes()) ;
+      }
 
 
     
-    const handleEnter=(e,nextId)=>{
-      if(e.keyCode===13) 
-        {e.preventDefault();
-        document.getElementById(nextId).focus();
-        }
-    }
+      const handleEnter=(e,nextId)=>{
+        if(e.keyCode===13) 
+          {
+            e.preventDefault();
+            document.getElementById(nextId).focus();
+          }
+      }
 
 
  return (
@@ -108,21 +110,22 @@ const Todo=()=>{
             <div className="d-flex justify-content-between p-2">
             <button className="add btn " onClick={addNew}>＋</button>
             <form className="d-flex searchbar" >
-                <input id="srchtxt" className=" srchbar form-control me-2" type="text"  placeholder="🔍 Search" aria-label="Search" onChange={addSrc}/>
+                <input id="srchtxt" className=" srchbar form-control me-2" type="text"  placeholder="🔍 Search" aria-label="Search" onChange={updateSrc}/>
                 <Link to={`/${src}`}><button className="srch btn btn-success" type="submit" hidden></button></Link>
             </form>
         </div>
 
-   
       {
         todos.filter(todo=>todo.title.toLowerCase().includes(search) || todo.desc.toLowerCase().includes(search)).map((item)=>{
        
         return(
-       <div role="button" className="accordion-item" key={item.id} >
+        <div role="button" className="accordion-item" key={item.id} >
           <h2 className="accordion-header d-flex flex-row">
-          <input type="checkbox" className="mx-1" id="task" name="task"  onChange={()=>toggle(item.id-1)} />
-          <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${item.id}`} style={{textDecorationLine: item.status?"":`line-through`}}  >
-           {item.id+" "+item.title}
+            <input type="checkbox" className="mx-1" id="task" name="task"  onChange={()=>toggle(item.id-1)} />
+            <button className="accordion-button collapsed" type="button" 
+                    data-bs-toggle="collapse" data-bs-target={`#collapse${item.id}`} 
+                    style={{textDecorationLine: item.status?"":`line-through`}}>
+            {item.id+" "+item.title}
             </button>
           </h2>
 
@@ -132,21 +135,17 @@ const Todo=()=>{
                 <div className="d-flex justify-content-between p-2">
                   <span className="time">{item.time}</span>
                   <input class="taskTitle" id={`title${item.id}`}  disabled={(edit!==item.id)?true:false} defaultValue={item.title}  onKeyDown={(e)=>handleEnter(e,`desc${item.id}`)}/> 
-                   <button className="btn edit m-auto" id={`edit${item.id}`} type="button" onClick={()=>enableEdit(item.id)} >{(edit!==item.id)?"edit":"done"}</button>
+                  <button className="btn edit m-auto" id={`edit${item.id}`} type="button" onClick={()=>enableEdit(item.id)} >{(edit!==item.id)?"edit":"done"}</button>
                 </div>
-                
+
                 <textarea id={`desc${item.id}`}  name="desc" disabled={(edit!==item.id)?true:false} style={{ wordWrap: "break-word" }} defaultValue={item.desc} onKeyDown={(e)=>handleEnter(e,`edit${item.id}`)}/>
               </div>
             </div>
           </div>
         </div>)
-        })}
-
+        })
+      }
   </div>)
-
-  
-
-
 
 }
 export default Todo;

@@ -1,10 +1,3 @@
-.mouse-memoirs-regular {
-  font-family: "Mouse Memoirs", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-
 
 .App {
   text-align: center;
@@ -16,6 +9,9 @@
 
 
 /* accordion*/
+
+
+
 .accordion{
   width: 400px;
   height:max-content;
@@ -29,25 +25,32 @@
 .accordion-item, .accordion-item:last-of-type{
     margin: 10px;
     background-color: rgb(224, 200, 255);
-      border-radius: 30px 30px 30px 30px;
-      box-shadow: 1px 1px 2px;
-      border-width: 0px;
+    border-radius: 30px 30px 30px 30px;
+    box-shadow: 1px 1px 2px;
+    border-width: 0px;
 }
 .accordion-button, .accordion-item:last-of-type>.accordion-header .accordion-button.collapsed{
-border-radius: 50px;
-/* margin-right: 5%; */
-border: groove 1px  rgba(0, 0, 0, 0.459);
-
+  border-radius: 50px;
+  border: groove 1px  rgba(0, 0, 0, 0.459);
 }
 
 .accordion-button:not(.collapsed){ 
   background-color: white;
 }
+
 .accordion-button:focus{
   box-shadow:none;
 }
 
-/* Text box in accordian */
+.heading{
+  font-size: 3rem;
+  font-family: "Mouse Memoirs", sans-serif; ;
+  
+}
+
+
+
+/* Contents in accordion items */
 .taskTitle, textarea{
   color: black;
   text-align: center;
@@ -56,15 +59,15 @@ border: groove 1px  rgba(0, 0, 0, 0.459);
 }
 textarea{
   height: 6rem;
-  
 }
+
 .taskTitle{
   font-weight: bold;
   min-width: 1px;
   margin: 2px;
   font-size: 1.3rem;
-  
 }
+
 .taskTitle:disabled , textarea:disabled{
   background-color: rgba(255, 255, 255, 0.228);
   
@@ -73,21 +76,16 @@ textarea{
   margin: auto;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   padding:2px;
-  
 }
-
 
 .edit{
   background-color: blueviolet;
   border-radius: 50px;
-  /* font-size: 20px; */
   vertical-align: middle;
   color: white;
-  /* width: 15%; */
  }
 
 /* Header of acordian */
-
 .add{
  background-color: blueviolet;
  border-radius: 50px;
@@ -108,12 +106,6 @@ textarea{
   border-radius:50px;
   border-color:rgb(145, 23, 211); 
   border-width: 0.2em
-  /* margin : 1%; */
 }
 
 
-.heading{
-  font-size: 3rem;
-  font-family: "Mouse Memoirs", sans-serif; ;
-  
-}
