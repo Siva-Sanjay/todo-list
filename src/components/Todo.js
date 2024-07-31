@@ -106,7 +106,7 @@ const Todo=()=>{
       <div className="accordion" id="accordionExample">
         <div className="heading">Todo List</div>
             <div className="d-flex justify-content-between p-2">
-            <button className="add btn " onClick={addNew}> + </button>
+            <button className="add btn " onClick={addNew}>＋</button>
             <form className="d-flex searchbar" >
                 <input id="srchtxt" className=" srchbar form-control me-2" type="text"  placeholder="🔍 Search" aria-label="Search" onChange={addSrc}/>
                 <Link to={`/${src}`}><button className="srch btn btn-success" type="submit" hidden></button></Link>
@@ -132,7 +132,7 @@ const Todo=()=>{
                 <div className="d-flex justify-content-between p-2">
                   <span className="time">{item.time}</span>
                   <input class="taskTitle" id={`title${item.id}`}  disabled={(edit!==item.id)?true:false} defaultValue={item.title}  onKeyDown={(e)=>handleEnter(e,`desc${item.id}`)}/> 
-                   <button className="btn btn-dark" id={`edit${item.id}`} type="button" onClick={()=>enableEdit(item.id)} >{(edit!==item.id)?"edit":"done"}</button>
+                   <button className="btn edit m-auto" id={`edit${item.id}`} type="button" onClick={()=>enableEdit(item.id)} >{(edit!==item.id)?"edit":"done"}</button>
                 </div>
                 
                 <textarea id={`desc${item.id}`}  name="desc" disabled={(edit!==item.id)?true:false} style={{ wordWrap: "break-word" }} defaultValue={item.desc} onKeyDown={(e)=>handleEnter(e,`edit${item.id}`)}/>
