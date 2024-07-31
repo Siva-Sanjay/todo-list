@@ -107,7 +107,7 @@ const Todo=()=>{
         <div className="heading">Todo List</div>
             <div className="d-flex justify-content-between p-2">
             <button className="add btn " onClick={addNew}> + </button>
-            <form className="d-flex searchbar" role="">
+            <form className="d-flex searchbar" >
                 <input id="srchtxt" className=" srchbar form-control me-2" type="text"  placeholder="🔍 Search" aria-label="Search" onChange={addSrc}/>
                 <Link to={`/${src}`}><button className="srch btn btn-success" type="submit" hidden></button></Link>
             </form>
