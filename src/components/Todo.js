@@ -52,10 +52,7 @@ const Todo=()=>{
             time: getCurrTime()
           }])
      }
-    const deleteTask=(id)=>{
-      setTodos(todos.filter(item => item.id!==id));
-      // <span onClick={()=>deleteTask(item.id)}>Delete</span>
-    }
+    
 
  
     const toggle=(id)=>{
